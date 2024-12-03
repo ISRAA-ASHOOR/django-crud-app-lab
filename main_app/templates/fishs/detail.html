@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/fishs/fish-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="fish-container">
+  <div>
+    <img class="fish-img" src="{% static 'images/nemo.webp' %}" alt="nemo" />
+  </div>
+  <div class="fish-details">
+    <h1>{{ fish.name }}</h1>
+    <h2>A {{ fish.breed }} fish.</h2>
+    <p>{{ fish.description }}</p>
+  </div>
+</section>
+{% endblock %}
