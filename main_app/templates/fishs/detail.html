@@ -5,13 +5,59 @@
 {% endblock %} 
 {% block content %}
 <section class="fish-container">
-  <div>
-    <img class="fish-img" src="{% static 'images/nemo.webp' %}" alt="nemo" />
-  </div>
   <div class="fish-details">
     <h1>{{ fish.name }}</h1>
     <h2>A {{ fish.breed }} fish.</h2>
     <p>{{ fish.description }}</p>
+    <div class="fish-actions">
+      <a href="{% url 'fish-update' fish.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'fish-delete' fish.id %}" class="btn danger">Delete</a>
+    </div>
+  </div>
+  <div class="feedings-toy-container">
+    <section class="feedings">
+      <div class="subsection-title">
+        <h2>Feedings</h2>
+        <img
+          src="{% static 'images/nemo.webp' %}"
+          alt="nemo"
+        />
+      </div>
+      <h3>Add a Feeding</h3>
+      <form
+        action="{% url 'add-feeding' fish.id %}"
+        method="post"
+        class="subsection-content"
+        autocomplete="off"
+      >
+        {% csrf_token %} 
+        {{ feeding_form.as_p }}
+        <button type="submit" class="btn submit">Add Feeding</button>
+      </form>
+      <h3>Past Feedings</h3>
+      {% if fish.feeding_set.all.count %}
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Meal</th>
+          </tr>
+        </thead>
+        <tbody>
+      {% for feeding in fish.feeding_set.all %}
+      <tr>
+        <td>{{feeding.date}}</td>
+        <td>{{feeding.get_meal_display}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+    {% else %}
+      <div class="subsection-content">
+        <p>⚠️ {{fish.name}} has not been fed!</p>
+      </div>
+    {% endif %}
+    </section>
   </div>
 </section>
 {% endblock %}

@@ -6,11 +6,6 @@
     justify-content: center;
 }
   
-.fish-img {
-    width: 300px;
-    position: fixed;
-}
-  
 .usr-img {
     width: 100%;
     border-radius: var(--card-border-radius);
@@ -89,7 +84,7 @@
 }
   
 .feedings-toy-container > section {
-    width: 80%;
+    width: 60%;
     min-width: 360px;
     border: var(--borders);
     border-radius: var(--card-border-radius);
@@ -150,24 +145,6 @@
     font-size: var(--font-l);
     padding: 5px 5px 0;
     border-bottom: rgb(36, 116, 248) solid 2px;
-}
-  
-.feedings tr:nth-child(even) {
-    background-color: #f3f3fd;
-}
-  
-.toy-container p {
-    margin: 12px 0;
-}
-  
-.toy-container a {
-    text-decoration: none;
-    color: #111;
-}
-  
-.toy-container .btn {
-    padding: 3px 10px;
-    margin-left: 10px;
 }
   
 #file-input {
